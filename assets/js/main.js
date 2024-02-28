@@ -38,7 +38,7 @@ function generateSquares(level) {
 
     gameBoard.innerHTML = '';
     gameBoard.style.setProperty('width', boardWidth);
-    // generate a square grid  
+    // generate cells 
     for (let i = 1; i <= squaresNumb; i++) {
         addCells(i);
     }
