@@ -66,8 +66,8 @@ main {
         flex-wrap: wrap;
         border-radius: .3rem;
         overflow: hidden;
-        border:2px solid transparent;
-        transition: border 3s ease;
+        /* border:2px solid transparent;
+        transition: border 3s ease; */
 
         .square {
             width: 80px;
