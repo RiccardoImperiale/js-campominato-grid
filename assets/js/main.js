@@ -3,33 +3,8 @@ const startBtn = document.querySelector('button');
 const difficultyLevels = document.querySelector('#difficulty');
 
 startBtn.addEventListener('click', () => {
-    // easy mode
-    if (difficultyLevels.value == 1) {
-        gameBoard.innerHTML = '';
-        gameBoard.style.setProperty('width', 'calc(800px + 4px)');
-        // generate a square grid  
-        for (let i = 1; i <= 100; i++) {
-            addCells(i);
-        }
-    }
-    // normal mode
-    if (difficultyLevels.value == 2) {
-        gameBoard.innerHTML = '';
-        gameBoard.style.setProperty('width', 'calc(80px * 9 + 4px)');
-        // generate a square grid  
-        for (let i = 1; i <= 81; i++) {
-            addCells(i);
-        }
-    }
-    // hard mode
-    if (difficultyLevels.value == 3) {
-        gameBoard.innerHTML = '';
-        gameBoard.style.setProperty('width', 'calc(80px * 7 + 4px)');
-        // generate a square grid  
-        for (let i = 1; i <= 49; i++) {
-            addCells(i);
-        }
-    }
+    // generate the squares by difficulty level
+    generateSquares(difficultyLevels.value);
     // change square color 
     colorSquare();
 })
@@ -42,6 +17,30 @@ function colorSquare() {
             square.classList.toggle('square_dark');
             console.log(square.innerText);
         })
+    }
+}
+
+function generateSquares(level) {
+    let squaresNumb;
+    let boardWidth = '';
+    if (level == 1) {
+        squaresNumb = 100
+        boardWidth = 'calc(800px + 4px)'
+    }
+    if (level == 2) {
+        squaresNumb = 81
+        boardWidth = 'calc(80px * 9 + 4px)'
+    }
+    if (level == 3) {
+        squaresNumb = 49
+        boardWidth = 'calc(80px * 7 + 4px)'
+    }
+
+    gameBoard.innerHTML = '';
+    gameBoard.style.setProperty('width', boardWidth);
+    // generate a square grid  
+    for (let i = 1; i <= squaresNumb; i++) {
+        addCells(i);
     }
 }
 
