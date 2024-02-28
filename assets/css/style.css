@@ -1,0 +1,47 @@
+:root {
+    --cm-primary: rgb(0, 253, 156);
+    --cm-primary-darker: rgb(0, 62, 39);
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+header {
+    background-color: white;
+
+    & nav {
+        padding-inline: 5rem;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cm-primary-darker);
+        }
+
+        & button {
+            background-color: var(--cm-primary);
+            padding: .5rem 1.5rem;
+            border: none;
+            border-radius: .5rem;
+            font-weight: bold;
+            color: var(--cm-primary-darker);
+        }
+    }
+}
+
+main {
+    height: calc(100vh - 60px);
+    background-color: var(--cm-primary);
+}
