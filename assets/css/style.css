@@ -30,7 +30,7 @@ header {
             color: var(--cm-primary-darker);
         }
 
-        #difficulty{
+        #difficulty {
             padding: .2rem .8rem;
             border-radius: .5rem;
         }
@@ -58,8 +58,10 @@ main {
     background-color: var(--cm-primary);
     padding: 5rem 0;
 
+
     .game_board {
-        max-width: calc(800px + 4px);
+        /* width: calc(800px + 4px); */
+        background-color: rgb(255, 0, 157);
         margin: auto;
         display: flex;
         flex-wrap: wrap;
@@ -78,10 +80,21 @@ main {
             font-weight: bold;
         }
 
+        /* .square_easy {
+            width: 80px;
+        }
+
+        .square_normal {
+            width: calc(100% / 9);
+        }
+
+        .square_hard {
+            width: calc(100% / 7);
+        } */
+
         .square_dark {
             background-color: var(--cm-primary-darker);
             color: var(--cm-primary);
         }
     }
 }
-
