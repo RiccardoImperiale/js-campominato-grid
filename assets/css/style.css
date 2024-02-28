@@ -54,22 +54,28 @@ main {
     padding-top: 5rem;
 
     .game_board {
-        max-width: calc(1000px + 4px);
+        max-width: calc(800px + 4px);
         margin: auto;
         display: flex;
         flex-wrap: wrap;
-        border: 2px solid var(--cm-primary-darker);
+        /* border: 2px solid var(--cm-primary-darker); */
         border-radius: .3rem;
         overflow: hidden;
 
         .square {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            aspect-ratio: 1;
             background-color: var(--cm-light);
             border: 2px solid var(--cm-primary-darker);
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+        }
+
+        .bg_lightblue {
+            background-color: lightblue;
         }
     }
 }
+
