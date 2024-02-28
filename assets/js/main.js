@@ -3,6 +3,7 @@ const startBtn = document.querySelector('button');
 const difficultyLevels = document.querySelector('#difficulty');
 
 startBtn.addEventListener('click', () => {
+    // easy mode
     if (difficultyLevels.value == 1) {
         gameBoard.innerHTML = '';
         gameBoard.style.setProperty('width', 'calc(800px + 4px)');
@@ -11,7 +12,7 @@ startBtn.addEventListener('click', () => {
             addCells(i);
         }
     }
-
+    // normal mode
     if (difficultyLevels.value == 2) {
         gameBoard.innerHTML = '';
         gameBoard.style.setProperty('width', 'calc(80px * 9 + 4px)');
@@ -20,7 +21,7 @@ startBtn.addEventListener('click', () => {
             addCells(i);
         }
     }
-
+    // hard mode
     if (difficultyLevels.value == 3) {
         gameBoard.innerHTML = '';
         gameBoard.style.setProperty('width', 'calc(80px * 7 + 4px)');
@@ -29,7 +30,6 @@ startBtn.addEventListener('click', () => {
             addCells(i);
         }
     }
-
     // for each cell on click change color
     colorSquare();
 })
@@ -46,8 +46,13 @@ function colorSquare() {
 }
 
 function addCells(i) {
-    // each cell has a progressive number, from 1 to 100
-    const squareMarkup = `<div class="square">${i}</div>`;
-    gameBoard.style.border = '2px solid var(--cm-primary-darker)'
-    gameBoard.insertAdjacentHTML('beforeend', squareMarkup)
+    setTimeout(() => {
+        // each cell has a progressive number, from 1 to 100
+        const squareMarkup = `<div class="square">${i}</div>`;
+        gameBoard.insertAdjacentHTML('beforeend', squareMarkup);
+    }, i * 15);
+    
+     setTimeout(() => {
+        gameBoard.style.border = '2px solid var(--cm-primary-darker)';
+     }, 1500);
 }
