@@ -1,8 +1,7 @@
 :root {
-    --cm-light: rgb(231, 255, 246);
+    --cm-light: rgb(233, 255, 247);
     --cm-primary: rgb(0, 253, 156);
-    --cm-primary-darker: rgb(6, 19, 57);
-
+    --cm-primary-darker: rgb(7, 21, 64);
 }
 
 * {
@@ -31,9 +30,15 @@ header {
             color: var(--cm-primary-darker);
         }
 
+        #difficulty{
+            padding: .2rem .8rem;
+            border-radius: .5rem;
+        }
+
         & button {
             background-color: var(--cm-primary);
             padding: .5rem 1.5rem;
+            margin-left: 1rem;
             border: none;
             border-radius: .5rem;
             font-weight: bold;
@@ -58,7 +63,6 @@ main {
         margin: auto;
         display: flex;
         flex-wrap: wrap;
-        /* border: 2px solid var(--cm-primary-darker); */
         border-radius: .3rem;
         overflow: hidden;
 

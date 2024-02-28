@@ -11,6 +11,10 @@ startBtn.addEventListener('click', () => {
     }
 
     // for each cell on click change color
+    colorSquare();
+})
+
+function colorSquare() {
     const squares = document.querySelectorAll('.square');
     for (let i = 0; i < squares.length; i++) {
         let square = squares[i];
@@ -19,5 +23,4 @@ startBtn.addEventListener('click', () => {
             console.log(square.innerText);
         })
     }
-
-})
+}
