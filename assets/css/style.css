@@ -1,7 +1,7 @@
 :root {
     --cm-light: rgb(231, 255, 246);
     --cm-primary: rgb(0, 253, 156);
-    --cm-primary-darker: rgb(31, 52, 44);
+    --cm-primary-darker: rgb(6, 19, 57);
 
 }
 
@@ -49,9 +49,9 @@ header {
 }
 
 main {
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
     background-color: var(--cm-primary);
-    padding-top: 5rem;
+    padding: 5rem 0;
 
     .game_board {
         max-width: calc(800px + 4px);
@@ -71,10 +71,12 @@ main {
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            font-weight: bold;
         }
 
-        .bg_lightblue {
-            background-color: lightblue;
+        .square_dark {
+            background-color: var(--cm-primary-darker);
+            color: var(--cm-primary);
         }
     }
 }
