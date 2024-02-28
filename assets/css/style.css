@@ -1,7 +1,8 @@
 :root {
+    --cm-light: rgb(231, 255, 246);
     --cm-primary: rgb(0, 253, 156);
-    --cm-primary-darker: rgb(0, 62, 39);
-    
+    --cm-primary-darker: rgb(31, 52, 44);
+
 }
 
 * {
@@ -15,7 +16,7 @@ body {
 }
 
 header {
-    background-color: white;
+    background-color: var(--cm-light);
 
     & nav {
         padding-inline: 5rem;
@@ -37,6 +38,12 @@ header {
             border-radius: .5rem;
             font-weight: bold;
             color: var(--cm-primary-darker);
+
+            &:hover {
+                color: var(--cm-primary);
+                background-color: var(--cm-primary-darker);
+                cursor: pointer;
+            }
         }
     }
 }
@@ -44,4 +51,25 @@ header {
 main {
     height: calc(100vh - 60px);
     background-color: var(--cm-primary);
+    padding-top: 5rem;
+
+    .game_board {
+        max-width: calc(1000px + 4px);
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        border: 2px solid var(--cm-primary-darker);
+        border-radius: .3rem;
+        overflow: hidden;
+
+        .square {
+            width: 100px;
+            height: 100px;
+            background-color: var(--cm-light);
+            border: 2px solid var(--cm-primary-darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }
