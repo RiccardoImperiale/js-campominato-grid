@@ -30,7 +30,7 @@ startBtn.addEventListener('click', () => {
             addCells(i);
         }
     }
-    // for each cell on click change color
+    // change square color 
     colorSquare();
 })
 
@@ -46,7 +46,6 @@ function colorSquare() {
 }
 
 function addCells(i) {
-    // each cell has a progressive number, from 1 to 100
     const squareMarkup = `<div class="square">${i}</div>`;
     gameBoard.style.border = '2px solid var(--cm-primary-darker)'
     gameBoard.insertAdjacentHTML('beforeend', squareMarkup)
