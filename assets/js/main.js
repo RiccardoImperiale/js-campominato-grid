@@ -1,12 +1,17 @@
 const gameBoard = document.querySelector('.game_board');
 const difficultyLevels = document.querySelector('#difficulty');
-
+const gameEndCard = document.querySelector('.end_game');
+const scoreText = document.querySelector('#final_score');
+let score = 0;
+let level;
+let squaresNumb;
 
 document.querySelector('button').addEventListener('click', () => {
+    level = difficultyLevels.value;
     // generate the squares by difficulty level
-    generateSquares(difficultyLevels.value);
-    // generate mushrooms based on level
-    let mushrooms = generateSquares(difficultyLevels.value)
+    generateSquares();
+    // generate mushrooms
+    const mushrooms = generateMushrooms(squaresNumb);
     console.log(mushrooms);
     // click on each square check if there is a mushroom 
     const squares = document.querySelectorAll('.square');
@@ -15,17 +20,19 @@ document.querySelector('button').addEventListener('click', () => {
         square.addEventListener('click', () => {
             if (mushrooms.includes(Number(square.innerText))) {
                 square.innerText = '🍄';
+                square.classList.add('square_red');
+                scoreText.innerText = `Final score: ${score}`
+                gameEndCard.style.display = 'flex';
             } else {
+                score++
                 square.classList.toggle('square_dark');
             }
-            console.log(square.innerText);
+            console.log(square.innerText, score);
         })
     }
 })
 
-
-function generateSquares(level) {
-    let squaresNumb;
+function generateSquares() {
     let boardWidth = '';
     if (level == 1) {
         squaresNumb = 100
@@ -46,9 +53,6 @@ function generateSquares(level) {
     for (let i = 1; i <= squaresNumb; i++) {
         generateCells(i);
     }
-
-    const mushrooms = generateMushrooms(squaresNumb);
-    return mushrooms;
 }
 
 function generateCells(numb) {
@@ -57,10 +61,10 @@ function generateCells(numb) {
     gameBoard.insertAdjacentHTML('beforeend', squareMarkup)
 }
 
-function generateMushrooms(numb) {
+function generateMushrooms(num) {
     let mushroomsArr = []
     while (mushroomsArr.length < 16) {
-        const randNumb = getRndNumber(1, numb)
+        const randNumb = getRndNumber(1, num)
         if (!mushroomsArr.includes(randNumb)) {
             mushroomsArr.push(randNumb)
         }
