@@ -21,16 +21,28 @@ document.querySelector('button').addEventListener('click', () => {
             if (mushrooms.includes(Number(square.innerText))) {
                 square.innerText = '🍄';
                 square.classList.add('square_red');
-                scoreText.innerText = `Final score: ${score}`
-                gameEndCard.style.display = 'flex';
+                endGame();
             } else {
-                score++
+                square.classList.contains('square_dark') ? score-- : score++
+                if (score === squaresNumb) {
+                    winGame();
+                }
                 square.classList.toggle('square_dark');
             }
             console.log(square.innerText, score);
         })
     }
 })
+
+function endGame() {
+    scoreText.innerText = `Final score: ${score}`
+    gameEndCard.style.display = 'flex';
+}
+
+function winGame() {
+    scoreText.innerText = 'You win'
+    gameEndCard.style.display = 'flex';
+}
 
 function generateSquares() {
     let boardWidth = '';
