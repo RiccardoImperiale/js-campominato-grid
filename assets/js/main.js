@@ -1,13 +1,16 @@
 const gameBoard = document.querySelector('.game_board');
-const startBtn = document.querySelector('button');
 const difficultyLevels = document.querySelector('#difficulty');
 
-startBtn.addEventListener('click', () => {
+
+
+
+document.querySelector('button').addEventListener('click', () => {
     // generate the squares by difficulty level
     generateSquares(difficultyLevels.value);
     // change square color 
     colorSquare();
 })
+
 
 function colorSquare() {
     const squares = document.querySelectorAll('.square');
@@ -36,16 +39,36 @@ function generateSquares(level) {
         boardWidth = 'calc(80px * 7 + 4px)'
     }
 
+    const mushrooms = generateMushrooms(squaresNumb);
+    console.log(mushrooms);
+
     gameBoard.innerHTML = '';
     gameBoard.style.setProperty('width', boardWidth);
     // generate cells 
     for (let i = 1; i <= squaresNumb; i++) {
-        addCells(i);
+        generateCells(i);
     }
 }
 
-function addCells(i) {
-    const squareMarkup = `<div class="square">${i}</div>`;
+function getRndNumber(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
+function generateCells(numb) {
+    const squareMarkup = `<div class="square">${numb}</div>`;
     gameBoard.style.border = '2px solid var(--cm-primary-darker)'
     gameBoard.insertAdjacentHTML('beforeend', squareMarkup)
 }
+
+function generateMushrooms(numb) {
+    let mushroomsArr = []
+    while (mushroomsArr.length < 16) {
+        const randNumb = getRndNumber(1, numb)
+        if (!mushroomsArr.includes(randNumb)) {
+            mushroomsArr.push(randNumb)
+        }
+    }
+    return mushroomsArr;
+}
+
