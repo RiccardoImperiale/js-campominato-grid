@@ -29,9 +29,7 @@ function squareClick(square) {
             endGame(squaresNumb);
         } else {
             square.classList.contains('square_dark') ? score-- : score++
-            if (score === squaresNumb) {
-                winGame();
-            }
+            score === squaresNumb && winGame();
             square.classList.toggle('square_dark');
         }
         console.log(square.innerText, score);
