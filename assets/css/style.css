@@ -80,11 +80,20 @@ main {
             justify-content: center;
             cursor: pointer;
             font-weight: bold;
+            transition: all .25s;
+
+            &:hover {
+                background-color: rgb(159, 255, 220);
+                background-color: var(--cm-primary)
+            }
         }
 
         .square_dark {
             background-color: var(--cm-primary-darker);
             color: var(--cm-primary);
+            &:hover {
+                background-color: var(--cm-primary-darker);
+            }
         }
 
         .square_red {
