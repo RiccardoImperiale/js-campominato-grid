@@ -3,15 +3,13 @@ const difficultyLevels = document.querySelector('#difficulty');
 const gameEndCard = document.querySelector('.end_game');
 const scoreText = document.querySelector('#final_score');
 let score = 0;
-let level;
-let squaresNumb;
+let level, squaresNumb;
 
 // start game
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     level = difficultyLevels.value;
     generateSquares();
-    squareClick();
 })
 
 // restart
@@ -19,31 +17,26 @@ document.querySelector('#restart_btn').addEventListener('click', () => {
     gameEndCard.style.display = 'none';
     score = 0;
     generateSquares();
-    squareClick();
 })
 
-function squareClick() {
+function squareClick(square) {
     // generate mushrooms
     const mushrooms = generateMushrooms(squaresNumb);
     // click on each square check if there is a mushroom 
-    const squares = document.querySelectorAll('.square');
-    for (let i = 0; i < squares.length; i++) {
-        let square = squares[i];
-        square.addEventListener('click', () => {
-            if (mushrooms.includes(Number(square.innerText))) {
-                square.innerText = '🍄';
-                square.classList.add('square_red');
-                endGame(squaresNumb);
-            } else {
-                square.classList.contains('square_dark') ? score-- : score++
-                if (score === squaresNumb) {
-                    winGame();
-                }
-                square.classList.toggle('square_dark');
+    square.addEventListener('click', () => {
+        if (mushrooms.includes(Number(square.innerText))) {
+            square.innerText = '🍄';
+            square.classList.add('square_red');
+            endGame(squaresNumb);
+        } else {
+            square.classList.contains('square_dark') ? score-- : score++
+            if (score === squaresNumb) {
+                winGame();
             }
-            console.log(score);
-        })
-    }
+            square.classList.toggle('square_dark');
+        }
+        console.log(square.innerText, score);
+    })
 }
 
 function endGame(numb) {
@@ -75,14 +68,17 @@ function generateSquares() {
     gameBoard.style.setProperty('width', boardWidth);
     // generate cells 
     for (let i = 1; i <= squaresNumb; i++) {
-        generateCells(i);
+        let square = generateCell(i);
+        squareClick(square)
+        gameBoard.insertAdjacentElement('beforeend', square);
     }
 }
 
-function generateCells(numb) {
-    const squareMarkup = `<div class="square">${numb}</div>`;
-    gameBoard.style.border = '2px solid var(--cm-primary-darker)';
-    gameBoard.insertAdjacentHTML('beforeend', squareMarkup);
+function generateCell(numb) {
+    const squareCell = document.createElement('div')
+    squareCell.classList.add('square')
+    squareCell.innerText = numb;
+    return squareCell;
 }
 
 function generateMushrooms(num) {
