@@ -5,17 +5,22 @@ const scoreText = document.querySelector('#final_score');
 let score = 0;
 let level;
 let squaresNumb;
-startGame()
 
-function startGame() {
-    document.querySelector('form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        level = difficultyLevels.value;
-        // generate the squares by difficulty level
-        generateSquares();
-        squareClick();
-    })
-}
+// start game
+document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    level = difficultyLevels.value;
+    generateSquares();
+    squareClick();
+})
+
+// restart
+document.querySelector('#restart_btn').addEventListener('click', () => {
+    gameEndCard.style.display = 'none';
+    score = 0;
+    generateSquares();
+    squareClick();
+})
 
 function squareClick() {
     // generate mushrooms
@@ -36,17 +41,10 @@ function squareClick() {
                 }
                 square.classList.toggle('square_dark');
             }
-            console.log(square.innerText, score);
+            console.log(score);
         })
     }
 }
-
-document.querySelector('#restart_btn').addEventListener('click', () => {
-    gameEndCard.style.display = 'none';
-    score = 0;
-    generateSquares();
-    squareClick();
-})
 
 function endGame(numb) {
     scoreText.innerText = `Final score: ${score} / ${numb}`
@@ -54,7 +52,7 @@ function endGame(numb) {
 }
 
 function winGame() {
-    scoreText.innerText = 'You win'
+    scoreText.innerText = 'You win!'
     gameEndCard.style.display = 'flex';
 }
 
@@ -83,16 +81,16 @@ function generateSquares() {
 
 function generateCells(numb) {
     const squareMarkup = `<div class="square">${numb}</div>`;
-    gameBoard.style.border = '2px solid var(--cm-primary-darker)'
-    gameBoard.insertAdjacentHTML('beforeend', squareMarkup)
+    gameBoard.style.border = '2px solid var(--cm-primary-darker)';
+    gameBoard.insertAdjacentHTML('beforeend', squareMarkup);
 }
 
 function generateMushrooms(num) {
-    let mushroomsArr = []
+    let mushroomsArr = [];
     while (mushroomsArr.length < 16) {
-        const randNumb = getRndNumber(1, num)
+        const randNumb = getRndNumber(1, num);
         if (!mushroomsArr.includes(randNumb)) {
-            mushroomsArr.push(randNumb)
+            mushroomsArr.push(randNumb);
         }
     }
     return mushroomsArr;
