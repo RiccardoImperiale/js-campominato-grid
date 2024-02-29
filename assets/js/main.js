@@ -7,6 +7,7 @@ let level, squaresNumb;
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     level = document.querySelector('#difficulty').value;
+    score = 0;
     generateSquares();
 })
 
