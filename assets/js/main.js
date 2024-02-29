@@ -5,14 +5,21 @@ const scoreText = document.querySelector('#final_score');
 let score = 0;
 let level;
 let squaresNumb;
+startGame()
 
-document.querySelector('button').addEventListener('click', () => {
-    level = difficultyLevels.value;
-    // generate the squares by difficulty level
-    generateSquares();
+function startGame() {
+    document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        level = difficultyLevels.value;
+        // generate the squares by difficulty level
+        generateSquares();
+        squareClick();
+    })
+}
+
+function squareClick() {
     // generate mushrooms
     const mushrooms = generateMushrooms(squaresNumb);
-    console.log(mushrooms);
     // click on each square check if there is a mushroom 
     const squares = document.querySelectorAll('.square');
     for (let i = 0; i < squares.length; i++) {
@@ -21,7 +28,7 @@ document.querySelector('button').addEventListener('click', () => {
             if (mushrooms.includes(Number(square.innerText))) {
                 square.innerText = '🍄';
                 square.classList.add('square_red');
-                endGame();
+                endGame(squaresNumb);
             } else {
                 square.classList.contains('square_dark') ? score-- : score++
                 if (score === squaresNumb) {
@@ -32,10 +39,17 @@ document.querySelector('button').addEventListener('click', () => {
             console.log(square.innerText, score);
         })
     }
+}
+
+document.querySelector('#restart_btn').addEventListener('click', () => {
+    gameEndCard.style.display = 'none';
+    score = 0;
+    generateSquares();
+    squareClick();
 })
 
-function endGame() {
-    scoreText.innerText = `Final score: ${score}`
+function endGame(numb) {
+    scoreText.innerText = `Final score: ${score} / ${numb}`
     gameEndCard.style.display = 'flex';
 }
 
