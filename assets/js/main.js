@@ -1,5 +1,3 @@
-const gameBoard = document.querySelector('.game_board');
-const difficultyLevels = document.querySelector('#difficulty');
 const gameEndCard = document.querySelector('.end_game');
 const scoreText = document.querySelector('#final_score');
 let score = 0;
@@ -8,7 +6,7 @@ let level, squaresNumb;
 // start game
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    level = difficultyLevels.value;
+    level = document.querySelector('#difficulty').value;
     generateSquares();
 })
 
@@ -50,6 +48,7 @@ function winGame() {
 }
 
 function generateSquares() {
+    const gameBoard = document.querySelector('.game_board');
     let boardWidth = '';
     if (level == 1) {
         squaresNumb = 100
@@ -66,6 +65,7 @@ function generateSquares() {
 
     gameBoard.innerHTML = '';
     gameBoard.style.setProperty('width', boardWidth);
+    gameBoard.style.border = '2px solid var(--cm-primary-darker)';
     // generate cells 
     for (let i = 1; i <= squaresNumb; i++) {
         let square = generateCell(i);
