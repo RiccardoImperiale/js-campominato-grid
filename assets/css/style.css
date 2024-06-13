@@ -13,6 +13,7 @@
 
 body {
     font-family: sans-serif;
+    position: relative;
 }
 
 button {
@@ -38,11 +39,10 @@ header {
     background-color: var(--cm-primary);
 
     & nav {
-        /* padding-inline: 5rem; */
         height: 100px;
+        padding: 3rem 0;
         display: flex;
         justify-content: center;
-        align-items: flex-end;
 
         .logo {
             font-size: 1.5rem;
@@ -51,8 +51,7 @@ header {
         }
 
         #difficulty {
-            padding: .2rem .8rem;
-            border-radius: .5rem;
+            border-radius: .4rem;
         }
     }
 }
@@ -90,6 +89,7 @@ main {
         .square_dark {
             background-color: var(--cm-primary-darker);
             color: var(--cm-primary);
+
             &:hover {
                 background-color: var(--cm-primary-darker);
             }

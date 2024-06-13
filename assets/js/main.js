@@ -23,6 +23,7 @@ function squareClick(square) {
     const mushrooms = generateMushrooms(squaresNumb);
     // click on each square check if there is a mushroom 
     square.addEventListener('click', () => {
+        console.log(square);
         if (mushrooms.includes(Number(square.innerText))) {
             square.innerText = '🍄';
             square.classList.add('square_red');
